@@ -1,0 +1,27 @@
+namespaces:
+  argocd:
+    protected: false
+  sealed-secrets:
+    protected: false
+
+helmRepos:
+  argo: https://argoproj.github.io/argo-helm
+
+settings:
+  kubeContext: "kind-kind"
+
+apps:
+  argocd:
+    namespace: argocd
+    enabled: true
+    chart: argo/argo-cd
+    version: 5.51.4
+    valuesFile: values/argocd.yaml
+    hooks:
+      postInstall: hooks/argocd/postInstall.yaml
+
+  sealed-secret-config:
+    namespace: sealed-secrets
+    enabled: true
+    version: "1.0.0"
+    chart: ../charts/sealed-secret-config
