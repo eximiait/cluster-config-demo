@@ -1,4 +1,5 @@
-controller:
-  extraArgs:
-    publish-status-address: localhost
-    enable-ssl-passthrough: true
+ingress-nginx:
+  controller:
+    extraArgs:
+      publish-status-address: localhost
+      enable-ssl-passthrough: true
