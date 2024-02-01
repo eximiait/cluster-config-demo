@@ -1,5 +1,5 @@
 {
-    "argoApplicationName":"ingress-nginx2",
+    "argoApplicationName":"ingress-nginx",
     "namespace": "argocd",
 	"repoURL": "https://kubernetes.github.io/ingress-nginx",
 	"targetRevision": "4.9.1",
