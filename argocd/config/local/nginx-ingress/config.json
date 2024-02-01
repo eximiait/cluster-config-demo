@@ -1,12 +1,12 @@
 {
-    "argoApplicationName":"ingress-nginx",
-    "namespace": "argocd",
+  "argoApplicationName":"ingress-nginx",
+  "namespace": "ingress-nginx",
 	"repoURL": "https://kubernetes.github.io/ingress-nginx",
 	"targetRevision": "4.9.1",
 	"chart":"ingress-nginx",
 	"path": ".",
-    "environment": {
-      "name": "local",
-      "server": "https://kubernetes.default.svc"
-    }
+  "environment": {
+    "name": "local",
+    "server": "https://kubernetes.default.svc"
+  }
 }
