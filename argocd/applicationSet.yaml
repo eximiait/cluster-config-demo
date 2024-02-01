@@ -21,7 +21,7 @@ spec:
         chart: '{{chart}}'
         helm:
           valueFiles:
-            - '../values.yaml'
+            - 'values.yaml'
       destination:
         server: '{{environment.server}}'
         namespace: '{{namespace}}'
