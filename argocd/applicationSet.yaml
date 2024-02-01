@@ -16,11 +16,12 @@ spec:
       project: default
       source:
         repoURL: '{{repoURL}}'
+				path: ''
+				targetRevision: 4.9.1
+        chart: ingress-nginx
         helm:
           valueFiles:
             - 'config/{{environment.name}}/{{path.basename}}/values.yaml'
-        targetRevision: main
-        path: 'charts/addons/{{path.basename}}'
       destination:
         server: '{{environment.server}}'
         namespace: '{{namespace}}'
