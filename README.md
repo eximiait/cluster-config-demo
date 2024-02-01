@@ -3,7 +3,7 @@
 ## Pre-requisitos del sistema
 
 1. Docker
-2. kubectl
+2. [KinD](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
 
 ## Configuración el cluster demo
 
@@ -24,7 +24,7 @@ El resto de las herramientas y configuraciones del cluster se instalarán a trav
 
 1. Desencriptar el Secret para Sealed-Secrets:
 
-    1. Crear el archivo `ansible-vault-password` con la contraseña provista. Luego, este archivo se usará para desencriptar el archivo `./helmsman/secrets/kind-cluster-tls.yaml.vault`.
+    1. Crear el archivo `ansible-vault-password` con la contraseña provista con el comando a continuación. Luego, este archivo se usará para desencriptar el archivo `./helmsman/secrets/kind-cluster-tls.yaml.vault`:
 
         ```bash
         echo "<REDACTED>" > ansible-vault-password
@@ -48,5 +48,13 @@ El resto de las herramientas y configuraciones del cluster se instalarán a trav
     1. Ejecutar Helmsman:
 
         ```bash
-        root@docker-demo: helmsman -f helmsman/helmsman.yaml --apply
+        root@docker-demo: helmsman -f helmsman/helmsman.yaml --apply --subst-env-values
         ```
+
+## Argocd
+
+- Para obtener la password del usuario admin:
+
+```bash
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+```

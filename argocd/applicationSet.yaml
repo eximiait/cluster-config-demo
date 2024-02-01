@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-config
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/eximiait/cluster-config-demo
+        revision: main
+        files:
+          - path: "argocd/config/**/*.json"
+  template:
+    metadata:
+      name: '{{argoApplicationName}}'
+    spec:
+      project: default
+      source:
+        repoURL: '{{repoURL}}'
+        helm:
+          valueFiles:
+            - 'config/{{environment.name}}/{{path.basename}}/values.yaml'
+        targetRevision: main
+        path: 'charts/addons/{{path.basename}}'
+      destination:
+        server: '{{environment.server}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
