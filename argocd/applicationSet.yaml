@@ -21,7 +21,7 @@ spec:
         chart: '{{chart}}'
         helm:
           valueFiles:
-            - '../values.yaml'
+            - 'argocd/config/{{environment.name}}/{{path.basename}}/values.yaml'
       destination:
         server: '{{environment.server}}'
         namespace: '{{namespace}}'
