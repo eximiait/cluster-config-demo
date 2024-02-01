@@ -17,7 +17,7 @@ spec:
       source:
         repoURL: '{{repoURL}}'
         path: '.'
-				targetRevision: 4.9.1
+        targetRevision: 4.9.1
         chart: ingress-nginx
         helm:
           valueFiles:
