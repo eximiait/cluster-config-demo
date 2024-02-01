@@ -22,7 +22,7 @@ spec:
           helm:
             valueFiles:
               - $values/argocd/config/{{environment.name}}/{{path.basename}}/values.yaml
-				- repoURL: 'https://github.com/eximiait/cluster-config-demo'
+        - repoURL: 'https://github.com/eximiait/cluster-config-demo'
           targetRevision: main
           ref: values
       destination:
